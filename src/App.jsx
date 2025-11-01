@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
 // Import your page components
-import Homepage from './Homepage';
+import HomePage from './HomePage';
 import AiProgramPage from './AiProgramPage';
 import CyberProgramPage from './CyberProgramPage';
 
@@ -34,7 +34,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/ai-program" element={<AiProgramPage />} />
           <Route path="/cyber-program" element={<CyberProgramPage />} />
         </Routes>
