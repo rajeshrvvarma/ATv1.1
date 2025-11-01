@@ -1,0 +1,28 @@
+/* Design tokens: colors, spacing and breakpoints */
+:root {
+  --bg-hub-primary: #0D1117;
+  --bg-hub-secondary: #161B22;
+  --border-hub: #30363d;
+  --text-hub-primary: #e6edf3;
+  --text-hub-secondary: #8b949e;
+  --text-hub-headings: #ffffff;
+
+  --accent-ai: #0052cc;
+  --accent-cyber: #00f5c3;
+
+  --font-primary: 'Inter', sans-serif;
+  --font-monospace: 'Roboto Mono', monospace;
+
+  /* spacing scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+
+  /* breakpoints */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1100px;
+}
+
+/* export a small JS-friendly token file by keeping CSS variables in one place */

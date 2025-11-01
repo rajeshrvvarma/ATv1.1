@@ -1,0 +1,24 @@
+node_modules
+dist
+
+.env
+.env.local
+.env.example
+
+docs
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Logs, caches, and build artifacts
+npm-debug.log*
+.eslintcache
+.parcel-cache/
+.cache/
+coverage/
+build/
+
+# Audit output
+.audit-report.json

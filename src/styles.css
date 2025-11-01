@@ -1,0 +1,268 @@
+/* ================================================================================
+   Global Styles (Main Hub)
+   ================================================================================ */
+
+/* --- Import Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400;700&display=swap');
+@import './design/tokens.css';
+
+/* --- CSS Variables (Neutral Hub Theme) --- */
+:root {
+  --bg-hub-primary: #0D1117;     /* Dark BG to match Cyber theme */
+  --bg-hub-secondary: #161B22;  /* Lighter dark BG */
+  --border-hub: #30363d;
+  --text-hub-primary: #e6edf3;
+  --text-hub-secondary: #8b949e;
+  --text-hub-headings: #ffffff;
+  
+  --accent-ai: #007bff;        /* Blue for AI */
+  --accent-cyber: #00f5c3;    /* Green for Cyber */
+  
+  --font-primary: 'Inter', sans-serif;
+  --font-monospace: 'Roboto Mono', monospace;
+}
+
+/* --- Global Resets & Body --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-hub-primary);
+  color: var(--text-hub-primary);
+  line-height: 1.6;
+}
+
+/* Remove body styles from individual pages */
+body.ai-theme, body.cyber-theme {
+  background-color: transparent;
+  color: initial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--text-hub-headings);
+  margin-bottom: 20px;
+}
+
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.5rem; text-align: center; }
+
+p {
+  color: var(--text-hub-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Skip link and focus styling */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: static;
+  left: 0;
+  top: 10px;
+  width: auto;
+  height: auto;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  z-index: 3000;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* visible focus outlines for keyboard users */
+:focus {
+  outline: 3px solid rgba(0,123,255,0.25);
+  outline-offset: 2px;
+}
+
+/* --- Main Shared Header (from App.jsx) --- */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: var(--bg-hub-primary);
+  border-bottom: 1px solid var(--border-hub);
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+.main-header .main-logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-hub-headings);
+  font-family: var(--font-monospace, 'Inter', sans-serif);
+}
+
+.main-header .main-logo span {
+  color: var(--accent-ai);
+}
+
+.main-header .main-nav a {
+  margin: 0 15px;
+  font-weight: 600;
+  color: var(--text-hub-primary);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.main-header .main-nav a:hover {
+  color: var(--accent-ai);
+}
+
+/* Header responsive tweaks */
+.nav-toggle { display: none; background: transparent; border: none; color: var(--text-hub-primary); font-size: 1.35rem; }
+.main-nav { display: flex; gap: 12px; align-items: center; }
+.main-nav a { padding: 8px 10px; border-radius: 6px; }
+.main-nav a.active { background: rgba(255,255,255,0.06); box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15); }
+
+@media (max-width: 780px) {
+  .nav-toggle { display: block; }
+  .main-nav { position: absolute; right: 16px; top: 64px; background: var(--bg-hub-secondary); padding: 12px; border-radius: 8px; flex-direction: column; display: none; }
+  .main-nav.open { display: flex; }
+}
+
+/* Reveal animation helpers */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 450ms ease, transform 450ms ease; }
+.reveal.reveal-active { opacity: 1; transform: translateY(0); }
+
+/* Ticker: make touch-scroll on small screens */
+@media (max-width: 768px) {
+  .ticker-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .ticker-track { animation: none !important; }
+}
+
+/* Generic button styles using theme accent variable */
+.btn { padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; display: inline-block; text-decoration: none; }
+.btn-primary { background: var(--accent, var(--accent-ai)); color: #fff; }
+.btn-primary:hover { filter: brightness(0.95); transform: translateY(-2px); }
+.btn-secondary { background: transparent; color: var(--accent, var(--accent-ai)); border: 2px solid var(--accent, var(--accent-ai)); }
+.btn-secondary:hover { background: var(--accent, var(--accent-ai)); color: #fff; }
+
+/* Card styles (used by shared Card component) */
+.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; min-width: 220px; }
+.card .card-tag { font-family: var(--font-monospace); background: var(--accent, var(--accent-ai)); color: #fff; padding: 4px 8px; display: inline-block; border-radius: 6px; font-weight:700; margin-bottom: 12px; }
+.card h3 { margin: 0 0 8px 0; }
+.card-body { color: var(--text-hub-secondary); }
+
+/* Hero mobile tweaks */
+@media (max-width: 768px) {
+  .hero-section h1 { font-size: 1.8rem; }
+  .hero-section .sub-headline { font-size: 1rem; }
+  .hero-section .btn { display: block; width: 100%; margin: 8px 0; }
+}
+
+/* --- Homepage (Hub) Specific Styles --- */
+.homepage-hub {
+  text-align: center;
+}
+
+.hub-hero {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hub-hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+.hub-hero p {
+  font-size: 1.25rem;
+  color: var(--text-hub-primary);
+  margin-top: 20px;
+}
+
+.program-selection {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px 20px 100px 20px;
+  flex-wrap: wrap;
+}
+
+.program-card {
+  width: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: var(--bg-hub-secondary);
+  border: 1px solid var(--border-hub);
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.program-card-header {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 20px;
+}
+
+.program-card-header.ai-header {
+  background: #f4f8ff;
+  color: #0052cc;
+}
+
+.program-card-header.cyber-header {
+  background: #000;
+  color: var(--accent-cyber);
+  font-family: var(--font-monospace, 'Inter', sans-serif);
+}
+
+.program-card-content {
+  padding: 30px;
+  text-align: left;
+}
+
+.program-card-content h3 {
+  font-size: 1.8rem;
+  color: var(--text-hub-headings);
+}
+
+.program-card-content p {
+  color: var(--text-hub-secondary);
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.program-card-content .btn-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.program-card-content .ai-link {
+  color: var(--accent-ai);
+}
+.program-card-content .cyber-link {
+  color: var(--accent-cyber);
+}
+
