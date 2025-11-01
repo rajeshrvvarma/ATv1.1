@@ -1,23 +1,25 @@
 /* ================================================================================
-   Global Styles (Main Hub)
+   NEW ELEGANT UNIFIED THEME
+   Fonts, Variables, and Global Styles
    ================================================================================ */
 
 /* --- Import Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto+Mono:wght@400;700&display=swap');
-@import './design/tokens.css';
 
-/* --- CSS Variables (Neutral Hub Theme) --- */
+/* --- CSS Variables (Single Unified Theme) --- */
 :root {
-  --bg-hub-primary: #0D1117;     /* Dark BG to match Cyber theme */
-  --bg-hub-secondary: #161B22;  /* Lighter dark BG */
-  --border-hub: #30363d;
-  --text-hub-primary: #e6edf3;
-  --text-hub-secondary: #8b949e;
-  --text-hub-headings: #ffffff;
+  --bg-dark-primary: #121212;     /* Elegant dark charcoal */
+  --bg-dark-secondary: #1E1E1E; /* Lighter charcoal for cards/sections */
+  --border-color: #2C2C2C;      /* Softer border */
+  --text-primary: #E0E0E0;      /* Softer primary text */
+  --text-secondary: #888888;    /* Muted secondary text */
+  --text-headings: #FFFFFF;     /* Bright white headings */
   
-  --accent-ai: #007bff;        /* Blue for AI */
-  --accent-cyber: #00f5c3;    /* Green for Cyber */
-  
+  /* --- THE SINGLE BRAND ACCENT --- */
+  --accent-primary: #007AFF;   /* Professional "Academy" Blue */
+  --accent-hover: #3394FF;
+  /* --- END THEME --- */
+
   --font-primary: 'Inter', sans-serif;
   --font-monospace: 'Roboto Mono', monospace;
 }
@@ -31,238 +33,513 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-hub-primary);
-  color: var(--text-hub-primary);
+  background-color: var(--bg-dark-primary);
+  color: var(--text-primary);
   line-height: 1.6;
 }
 
-/* Remove body styles from individual pages */
-body.ai-theme, body.cyber-theme {
-  background-color: transparent;
-  color: initial;
-}
-
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  color: var(--text-hub-headings);
+  color: var(--text-headings);
   margin-bottom: 20px;
 }
 
-h1 { font-size: 3.2rem; }
+h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; }
 h2 { font-size: 2.5rem; text-align: center; }
+h3 { font-size: 1.5rem; }
 
 p {
-  color: var(--text-hub-secondary);
+  color: var(--text-secondary);
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
 a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+/* --- Main Layout Container --- */
+.page-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px;
+}
+
+/* --- Alternating Section Backgrounds --- */
+section:nth-of-type(odd) {
+  background-color: var(--bg-dark-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+/* The hero sections are not alternating */
+.hero-section {
+  background-color: var(--bg-dark-primary) !important;
+  border: none !important;
+}
+
+
+/* --- Buttons --- */
+.btn {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
 }
 
-/* Skip link and focus styling */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.skip-link:focus {
-  position: static;
-  left: 0;
-  top: 10px;
-  width: auto;
-  height: auto;
-  background: #fff;
-  color: #000;
-  padding: 8px 12px;
-  z-index: 3000;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: #FFF;
+  text-decoration: none;
 }
 
-/* visible focus outlines for keyboard users */
-:focus {
-  outline: 3px solid rgba(0,123,255,0.25);
-  outline-offset: 2px;
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  color: #FFF;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 122, 255, 0.2);
 }
 
-/* --- Main Shared Header (from App.jsx) --- */
-.main-header {
+.btn-secondary {
+  background-color: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-primary);
+  color: #FFF;
+}
+
+/* ================================================================================
+   SHARED COMPONENT STYLES
+   ================================================================================ */
+
+/* --- Header --- */
+.header-main {
+  padding: 20px 5%;
+  background-color: var(--bg-dark-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5%;
-  background-color: var(--bg-hub-primary);
-  border-bottom: 1px solid var(--border-hub);
-  position: sticky;
-  top: 0;
-  z-index: 2000;
 }
-
-.main-header .main-logo a {
+.header-main .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-hub-headings);
-  font-family: var(--font-monospace, 'Inter', sans-serif);
-}
-
-.main-header .main-logo span {
-  color: var(--accent-ai);
-}
-
-.main-header .main-nav a {
-  margin: 0 15px;
-  font-weight: 600;
-  color: var(--text-hub-primary);
-  font-size: 1rem;
+  color: var(--text-headings);
+  font-family: var(--font-monospace);
   text-decoration: none;
 }
-
-.main-header .main-nav a:hover {
-  color: var(--accent-ai);
+.header-main .logo span {
+  color: var(--accent-primary);
+}
+.header-main .nav-main {
+  display: flex;
+  gap: 25px;
+}
+.header-main .nav-main a {
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+}
+.header-main .nav-main a:hover {
+  color: var(--accent-primary);
 }
 
-/* Header responsive tweaks */
-.nav-toggle { display: none; background: transparent; border: none; color: var(--text-hub-primary); font-size: 1.35rem; }
-.main-nav { display: flex; gap: 12px; align-items: center; }
-.main-nav a { padding: 8px 10px; border-radius: 6px; }
-.main-nav a.active { background: rgba(255,255,255,0.06); box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15); }
-
-@media (max-width: 780px) {
-  .nav-toggle { display: block; }
-  .main-nav { position: absolute; right: 16px; top: 64px; background: var(--bg-hub-secondary); padding: 12px; border-radius: 8px; flex-direction: column; display: none; }
-  .main-nav.open { display: flex; }
-}
-
-/* Reveal animation helpers */
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity 450ms ease, transform 450ms ease; }
-.reveal.reveal-active { opacity: 1; transform: translateY(0); }
-
-/* Ticker: make touch-scroll on small screens */
-@media (max-width: 768px) {
-  .ticker-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
-  .ticker-track { animation: none !important; }
-}
-
-/* Generic button styles using theme accent variable */
-.btn { padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; display: inline-block; text-decoration: none; }
-.btn-primary { background: var(--accent, var(--accent-ai)); color: #fff; }
-.btn-primary:hover { filter: brightness(0.95); transform: translateY(-2px); }
-.btn-secondary { background: transparent; color: var(--accent, var(--accent-ai)); border: 2px solid var(--accent, var(--accent-ai)); }
-.btn-secondary:hover { background: var(--accent, var(--accent-ai)); color: #fff; }
-
-/* Card styles (used by shared Card component) */
-.card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; min-width: 220px; }
-.card .card-tag { font-family: var(--font-monospace); background: var(--accent, var(--accent-ai)); color: #fff; padding: 4px 8px; display: inline-block; border-radius: 6px; font-weight:700; margin-bottom: 12px; }
-.card h3 { margin: 0 0 8px 0; }
-.card-body { color: var(--text-hub-secondary); }
-
-/* Hero mobile tweaks */
-@media (max-width: 768px) {
-  .hero-section h1 { font-size: 1.8rem; }
-  .hero-section .sub-headline { font-size: 1rem; }
-  .hero-section .btn { display: block; width: 100%; margin: 8px 0; }
-}
-
-/* --- Homepage (Hub) Specific Styles --- */
+/* --- Homepage (Hub) Styles --- */
 .homepage-hub {
   text-align: center;
+  padding: 100px 20px;
+}
+.program-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+.program-card {
+  width: 400px;
+  background: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.program-card h3 {
+  color: var(--text-headings);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.program-card .program-accent-ai {
+  color: #007AFF; /* AI Blue */
+}
+.program-card .program-accent-cyber {
+  color: #34C759; /* Cyber Green */
+}
+.program-card .btn {
+  margin-top: 20px;
+}
+/* Use this to make the accent colors unique on the hub page */
+.program-card.ai-card .btn-primary {
+  background: #007AFF;
+}
+.program-card.ai-card .btn-primary:hover {
+  background: #3394FF;
+}
+.program-card.cyber-card .btn-primary {
+  background: #34C759;
+}
+.program-card.cyber-card .btn-primary:hover {
+  background: #30D158;
 }
 
-.hub-hero {
-  padding: 100px 20px;
+/* --- Hero Section --- */
+.hero-section {
+  text-align: center;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.hero-section h1 {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-section .sub-headline {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  color: var(--text-primary);
+}
+.hero-section .hero-cta {
+  margin-right: 15px;
+}
+
+/* --- Persona Section --- */
+.persona-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.persona-card {
+  background: var(--bg-dark-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  width: 320px;
+  text-align: left;
+}
+.persona-card h3 {
+  color: var(--accent-primary);
+}
+
+/* --- Skills Ticker --- */
+.skills-ticker-container {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.skills-ticker-container h2 {
+  margin-bottom: 40px;
+}
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  animation: scroll 40s linear infinite;
+}
+.ticker-item {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 1.2rem;
+  font-family: var(--font-monospace);
+  color: var(--text-secondary);
+  background: var(--bg-dark-secondary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* --- Portfolio (Lab/Project) Section --- */
+.lab-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  text-align: left;
+}
+.lab-card {
+  background: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.lab-card .lab-tag {
+  display: inline-block;
+  background: var(--accent-primary);
+  color: #FFF;
+  padding: 5px 10px;
+  margin: 20px 20px 0 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 5px;
+  align-self: flex-start;
+  font-family: var(--font-monospace);
+}
+.lab-card-content {
+  padding: 20px;
+  flex-grow: 1;
+}
+.lab-card-content h3 {
+  color: var(--text-headings);
+  font-size: 1.3rem;
+}
+.lab-card-content p {
+  font-size: 1rem;
+}
+
+/* --- Program Structure (Stepper) --- */
+.stepper {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  border: 1px solid var(--border-color);
+  background: var(--bg-dark-secondary);
+  border-radius: 8px;
+  padding: 30px;
+  text-align: left;
+  list-style: none;
+}
+.stepper-item {
+  padding: 20px;
+  border-bottom: 1px dashed var(--border-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.stepper-item:last-child {
+  border-bottom: none;
+}
+.stepper-item strong {
+  color: var(--accent-primary);
+  font-family: var(--font-monospace);
+  margin-right: 15px;
+}
+.stepper-item.final-step {
+  color: var(--accent-primary);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+/* --- Syllabus Accordion --- */
+.syllabus-section {
   max-width: 900px;
   margin: 0 auto;
 }
-
-.hub-hero h1 {
-  font-size: 3.5rem;
-  line-height: 1.2;
+.accordion-item {
+  background: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.accordion-title {
+  width: 100%;
+  padding: 20px;
+  background: var(--bg-dark-secondary);
+  border: none;
+  text-align: left;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-headings);
+}
+.accordion-title:hover {
+  background: #2a2a2a;
+}
+.accordion-title span {
+  color: var(--accent-primary);
+  font-size: 2rem;
+  font-weight: 400;
+}
+.accordion-content {
+  padding: 20px 30px 30px 30px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-dark-primary);
+}
+.accordion-content h4 {
+  color: var(--accent-primary);
+  font-family: var(--font-monospace);
+  font-size: 1.1rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.accordion-content h4:first-child {
+  margin-top: 0;
+}
+.accordion-content ul {
+  padding-left: 20px;
+}
+.accordion-content li {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+.accordion-content .capstone-project {
+  margin-top: 25px;
+  padding: 20px;
+  background: var(--bg-dark-secondary);
+  border: 1px dashed var(--accent-primary);
+  border-radius: 8px;
+}
+.accordion-content .capstone-project strong {
+  color: var(--accent-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
-.hub-hero p {
-  font-size: 1.25rem;
-  color: var(--text-hub-primary);
+/* --- Instructor Section --- */
+.instructor-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.instructor-card {
+  background: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px;
+  width: 400px;
+  text-align: left;
+}
+.instructor-card h3 {
+  font-size: 1.4rem;
+}
+.instructor-card p.title {
+  font-style: italic;
+  color: var(--accent-primary);
+  font-family: var(--font-monospace);
+  margin-bottom: 15px;
+}
+
+/* --- Pricing Section --- */
+.pricing-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.pricing-card {
+  background: var(--bg-dark-secondary);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  width: 400px;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+}
+.pricing-card.featured {
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.1);
+}
+.pricing-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-primary);
+  color: #FFF;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: var(--font-monospace);
+}
+.pricing-card h3 {
+  font-size: 1.8rem;
+}
+.pricing-card .price {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  margin: 15px 0;
+}
+.pricing-card .btn {
   margin-top: 20px;
 }
 
-.program-selection {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 50px 20px 100px 20px;
-  flex-wrap: wrap;
+/* --- FAQ Section --- */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.program-card {
-  width: 450px;
-  border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background: var(--bg-hub-secondary);
-  border: 1px solid var(--border-hub);
-}
-
-.program-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.program-card-header {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 800;
+/* --- Footer CTA --- */
+.footer-cta-section {
   text-align: center;
-  padding: 20px;
+  padding: 100px 20px;
+  background: var(--bg-dark-secondary);
+  border-top: 1px solid var(--border-color);
 }
-
-.program-card-header.ai-header {
-  background: #f4f8ff;
-  color: #0052cc;
+.footer-cta-section h2 {
+  font-size: 2.8rem;
 }
-
-.program-card-header.cyber-header {
-  background: #000;
-  color: var(--accent-cyber);
-  font-family: var(--font-monospace, 'Inter', sans-serif);
+.footer-cta-section p {
+  font-size: 1.2rem;
+  color: var(--text-primary);
 }
-
-.program-card-content {
-  padding: 30px;
-  text-align: left;
-}
-
-.program-card-content h3 {
-  font-size: 1.8rem;
-  color: var(--text-hub-headings);
-}
-
-.program-card-content p {
-  color: var(--text-hub-secondary);
-  font-size: 1rem;
-  margin-bottom: 30px;
-}
-
-.program-card-content .btn-link {
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.program-card-content .ai-link {
-  color: var(--accent-ai);
-}
-.program-card-content .cyber-link {
-  color: var(--accent-cyber);
+.footer-cta-section .btn {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  padding: 15px 35px;
 }
 

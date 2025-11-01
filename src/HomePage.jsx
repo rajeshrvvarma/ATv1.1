@@ -1,50 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Homepage.jsx
- * This is the NEW main landing page for "Agnidhra Technologies".
- * It acts as a hub to direct users to the different program pages.
- */
+/* ================================================================================
+   Homepage (HUB) Component
+   ================================================================================ */
 function Homepage() {
   return (
     <div className="homepage-hub">
-      <section className="hub-hero">
-        <h1>Your Career in Tech Starts Here.</h1>
-        <p>Choose your path. Master job-ready skills in AI or Cybersecurity with our project-based, end-to-end programs.</p>
-      </section>
+      <h1>Welcome to AgnidhraTech LMS</h1>
+      <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>
+        Your hub for project-based, job-ready career programs.
+      </p>
+      <p style={{ maxWidth: '600px', margin: '0 auto 40px auto' }}>
+        We don't do simple courses. We build complete, end-to-end career paths to get you from zero to a portfolio-ready professional.
+      </p>
 
-      <section className="program-selection">
+      <div className="program-card-container">
         
-        {/* AI Program Card */}
-        <Link to="/ai-program" className="program-card">
-          <div className="program-card-header ai-header">
-            Full-Stack AI Professional
-          </div>
-          <div className="program-card-content">
-            <h3>The AI Program</h3>
-            <p>Master Data Science, MLOps, and Generative AI. Build and deploy real-world AI applications from scratch.</p>
-            <span className="btn-link ai-link">
-              View AI Career Path &rarr;
-            </span>
-          </div>
-        </Link>
+        {/* --- AI Program Card --- */}
+        <div className="program-card ai-card">
+          <h3 className="program-accent-ai">Full-Stack AI Professional</h3>
+          <p>
+            Master Python, Data Science, MLOps, and Generative AI. Build and deploy
+            everything from predictive models to full-stack RAG applications.
+          </p>
+          <Link to="/ai-program" className="btn btn-primary">
+            View AI Program
+          </Link>
+        </div>
 
-        {/* Cyber Program Card */}
-        <Link to="/cyber-program" className="program-card">
-          <div className="program-card-header cyber-header">
-            Full-Stack Cyber Professional
-          </div>
-          <div className="program-card-content">
-            <h3>The Cyber Program</h3>
-            <p>Go from zero to hero. Master defensive (SOC) and offensive (PenTesting) security in hands-on labs.</p>
-            <span className="btn-link cyber-link">
-              View Cyber Career Path &rarr;
-            </span>
-          </div>
-        </Link>
-
-      </section>
+        {/* --- Cyber Program Card --- */}
+        <div className="program-card cyber-card">
+          <h3 className="program-accent-cyber">Full-Stack Cyber Professional</h3>
+          <p>
+            Master defensive and offensive security. Go from SOC analysis and
+            forensics to live penetration testing and cloud security.
+          </p>
+          <Link to="/cyber-program" className="btn btn-primary">
+            View Cyber Program
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

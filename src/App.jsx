@@ -1,31 +1,47 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Homepage from './HomePage';
+import { Routes, Route, Link } from 'react-router-dom';
+
+// Import your page components
+import Homepage from './Homepage';
 import AiProgramPage from './AiProgramPage';
 import CyberProgramPage from './CyberProgramPage';
-import ProgramHeader from './components/ProgramHeader';
+
+// Import your new single, global stylesheet
 import './styles.css';
 
-/**
- * App.jsx
- * This is the main entry point and router for your entire academy.
- * It defines the navigation links and the routes for each page.
- * * To install the router: npm install react-router-dom
- */
+/* ================================================================================
+   Shared Header Component
+   ================================================================================ */
+const Header = () => (
+  <header className="header-main">
+    <div className="header-container">
+      <Link to="/" className="logo">AgnidhraTech<span>LMS</span></Link>
+      <nav className="nav-main">
+        <Link to="/">Home</Link>
+        <Link to="/ai-program">AI Program</Link>
+        <Link to="/cyber-program">Cyber Program</Link>
+      </nav>
+    </div>
+  </header>
+);
 
-// Use shared ProgramHeader component
-
+/* ================================================================================
+   Main App Component
+   ================================================================================ */
 function App() {
   return (
-    <div className="App">
-      <ProgramHeader />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/ai-program" element={<AiProgramPage />} />
-        <Route path="/cyber-program" element={<CyberProgramPage />} />
-      </Routes>
+    <div className="app-wrapper">
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/ai-program" element={<AiProgramPage />} />
+          <Route path="/cyber-program" element={<CyberProgramPage />} />
+        </Routes>
+      </main>
     </div>
   );
 }
 
 export default App;
+
