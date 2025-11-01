@@ -7,7 +7,7 @@ export default function ProgramHeader() {
   return (
     <header className="main-header">
       <div className="main-logo">
-        <NavLink to="/" className="logo-link">AgnidhraTech <span>LMS</span></NavLink>
+        <NavLink to="/" className="logo-link">Agnidhra<span>Technologies</span></NavLink>
       </div>
 
       <button

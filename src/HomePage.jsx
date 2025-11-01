@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 /**
  * Homepage.jsx
- * This is the NEW main landing page for "AgnidhraTech LMS".
+ * This is the NEW main landing page for "Agnidhra Technologies".
  * It acts as a hub to direct users to the different program pages.
  */
 function Homepage() {
