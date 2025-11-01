@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Homepage() {
   return (
     <div className="homepage-hub">
-      <h1>Welcome to AgnidhraTech LMS</h1>
+      <h1>Welcome to Agnidhra Technologies</h1>
       <p style={{ fontSize: '1.2rem', color: 'var(--text-primary)' }}>
         Your hub for project-based, job-ready career programs.
       </p>
