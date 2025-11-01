@@ -121,6 +121,10 @@ section {
   background: var(--bg-pricing);
 }
 
+.program-structure-section {
+  background: var(--bg-secondary);
+}
+
 .skills-ticker-container {
   background: var(--bg-secondary);
 }
