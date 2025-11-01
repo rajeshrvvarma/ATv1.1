@@ -1,6 +1,6 @@
-# Agnidhra Technologies LMS
+# Agnidhra Technologies
 
-A React-based learning management system for AI and Cybersecurity programs.
+A React-based platform for AI and Cybersecurity programs.
 
 ## Features
 
