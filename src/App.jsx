@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Homepage from './HomePage';
 import AiProgramPage from './AiProgramPage';
 import CyberProgramPage from './CyberProgramPage';
@@ -17,16 +17,14 @@ import './styles.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <ProgramHeader />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/ai-program" element={<AiProgramPage />} />
-          <Route path="/cyber-program" element={<CyberProgramPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <ProgramHeader />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/ai-program" element={<AiProgramPage />} />
+        <Route path="/cyber-program" element={<CyberProgramPage />} />
+      </Routes>
+    </div>
   );
 }
 
