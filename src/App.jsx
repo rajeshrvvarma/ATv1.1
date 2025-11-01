@@ -15,7 +15,7 @@ import './styles.css';
 const Header = () => (
   <header className="header-main">
     <div className="header-container">
-      <Link to="/" className="logo">AgnidhraTech<span>LMS</span></Link>
+      <Link to="/" className="logo">Agnidhra Technologies</Link>
       <nav className="nav-main">
         <Link to="/">Home</Link>
         <Link to="/ai-program">AI Program</Link>
