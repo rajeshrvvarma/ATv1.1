@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 // Import your page components
-import Homepage from './Homepage';
+import HomePage from './HomePage';
 import AiProgramPage from './AiProgramPage';
 import CyberProgramPage from './CyberProgramPage';
 

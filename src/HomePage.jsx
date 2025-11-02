@@ -24,7 +24,7 @@ const StepItem = ({ number, title, children }) => (
 /* ================================================================================
    Main Homepage Component (The "Hub")
    ================================================================================ */
-function Homepage() {
+function HomePage() {
   return (
     <div className="homepage-hub">
       
@@ -118,5 +118,5 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePage;
 
