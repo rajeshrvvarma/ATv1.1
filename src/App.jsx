@@ -50,7 +50,7 @@ function App() {
         <Header />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/ai-program" element={<AiProgramPage />} />
             <Route path="/cyber-program" element={<CyberProgramPage />} />
           </Routes>
